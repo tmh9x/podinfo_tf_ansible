@@ -9,10 +9,10 @@ variable "instance_tags" {
   default = ["tf-ansible-1", "tf-ansible-2", "tf-ansible-3", "tf-ansible-4", "tf-ansible-5"]
 }
 
-# we use Ubuntu as the OS
+# we use Amazon Linux as the OS
 variable "ami" {
   type = string
-  default = "ami-0f7204385566b32d0" #eu-central-1 image for x86_64 Ubuntu_20.04 2021-05-28T21:06:05.000Z
+  default = "ami-0f7204385566b32d0" 
 }
 
 variable "instance_type" {

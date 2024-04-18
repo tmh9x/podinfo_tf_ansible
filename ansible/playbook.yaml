@@ -7,24 +7,6 @@
         state: latest
         update_cache: yes
 
-    - name: Ensure firewalld is installed
-      package:
-        name: firewalld
-        state: present
-
-    - name: Ensure firewalld is running
-      service:
-        name: firewalld
-        state: started
-        enabled: yes
-
-    - name: Allow all access to tcp port 80
-      firewalld:
-        service: http
-        permanent: true
-        state: enabled
-        immediate: yes
-
     - name: Start nginx
       service:
         name: nginx
