@@ -1,13 +1,21 @@
 - hosts: aws_ec2
   become: yes
   tasks:
-    - name: Update apt cache and install Nginx
+    - name: Install Docker
       yum:
-        name: nginx
-        state: latest
-        update_cache: yes
+        name: docker-ce
+        state: present
 
-    - name: Start nginx
+    - name: Start Docker
       service:
-        name: nginx
+        name: docker
         state: started
+
+    - name: Start Podinfo
+      docker_container:
+        name: podinfo
+        image: stefanprodan/podinfo
+        state: started
+        ports:
+          - "80:9898"
+        pull: true
